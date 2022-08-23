@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franco Petshop - Contacto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="loader">
+            <div class="paw-print-1">
+                <div class="pad large"></div>
+                <div class="pad small-1"></div>
+                <div class="pad small-2"></div>
+                <div class="pad small-3"></div>
+                <div class="pad small-4"></div>
+            </div>
+
+            <div class="paw-print-2">
+                <div class="pad large"></div>
+                <div class="pad small-1"></div>
+                <div class="pad small-2"></div>
+                <div class="pad small-3"></div>
+                <div class="pad small-4"></div>
+            </div>
+
+            <div class="paw-print-3">
+                <div class="pad large"></div>
+                <div class="pad small-1"></div>
+                <div class="pad small-2"></div>
+                <div class="pad small-3"></div>
+                <div class="pad small-4"></div>
+            </div>
+
+            <div class="paw-print-4">
+                <div class="pad large"></div>
+                <div class="pad small-1"></div>
+                <div class="pad small-2"></div>
+                <div class="pad small-3"></div>
+                <div class="pad small-4"></div>
+            </div>
+
+            <div class="paw-print-5">
+                <div class="pad large"></div>
+                <div class="pad small-1"></div>
+                <div class="pad small-2"></div>
+                <div class="pad small-3"></div>
+                <div class="pad small-4"></div>
+            </div>
+
+            <div class="paw-print-6">
+                <div class="pad large"></div>
+                <div class="pad small-1"></div>
+                <div class="pad small-2"></div>
+                <div class="pad small-3"></div>
+                <div class="pad small-4"></div>
+            </div>
+
+            <div class="paw-print-7">
+                <div class="pad large"></div>
+                <div class="pad small-1"></div>
+                <div class="pad small-2"></div>
+                <div class="pad small-3"></div>
+                <div class="pad small-4"></div>
+            </div>
+
+            <div class="paw-print-8">
+                <div class="pad large"></div>
+                <div class="pad small-1"></div>
+                <div class="pad small-2"></div>
+                <div class="pad small-3"></div>
+                <div class="pad small-4"></div>
+            </div>
+
+            <div class="loader-text">
+                <span>CARGANDO...</span>
+            </div>
+        </div>
+
+        <header class="d-flex justify-content-between px-5 align-items-center">
+            <a href="./index.html"><img src="assets/logo-transp.png" alt="logo" class="main-logo"></a>
+            <img src="assets/dog2.png" alt="" class="dog-logo">
+        </header>
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="d-lg-flex align-items-center collapse navbar-collapse navbar-collapsed"
+                    id="navbarSupportedContent">
+                    <a href="#"><img src="assets/paws.png" alt="" class="nav-img nav-item"></a>
+                    <a href="./index.html" class="navbar-button nav-item">Home</a>
+                    <a href="./farmacia.html" class="navbar-button nav-item">Farmacia</a>
+                    <a href="./juguetes.html" class="navbar-button nav-item">Juguetes</a>
+                    <a href="#" class="navbar-button nav-item">Contacto</a>
+                </div>
+
+                <div class="dropdown-favoritos">
+                    <button class="btn-personalizado" type="button"><img src="assets/favoritos.svg" alt="favoritos" class="favs-img"><span class="span-carrito">{{productosFavoritos.length}}</span></button>
+                    <div class="dropdown-favoritos-content">
+                        <div class="dropdown-cards" v-for="producto in productosFavoritos">
+                            <img v-bind:src="producto.imagen" alt="...">
+                            <span>{{producto.nombre}}</span>
+                            <a class="btn btn-index" @click="llenandoCarrito(producto); removerDeFavoritos(producto);"><img src="./assets/cart.svg" alt="" class="index-cart"></a>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-personalizado" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    <img src="assets/cart.svg" alt=""class="cart-img">
+                    <span class="span-carrito">{{productosDelCarrito.length}}</span>
+                </button>
+            </div>
+
+
+            <!-- OFFCANVAS -->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <h5 id="offcanvasRightLabel" class="h2"><button class="btn-personalizado" type="button"
+                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                            aria-controls="offcanvasRight"><img src="assets/cart.svg" alt=""
+                                class="cart-img"></button>Total del carrito</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body" v-if="productosDelCarrito.length >= 1">
+                    <div class="card mb-3" style="max-width: 540px;" v-for="producto in productosDelCarrito">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-4 cart-responsive2">
+                                <img v-bind:src="producto.imagen" class="img-fluid rounded-start img-cart" alt="...">
+                            </div>
+                            <div class="col-md-8 cart-responsive">
+                                <div class="card-body">
+                                    <h5 class="card-title justify-content-start">{{producto.nombre}}</h5>
+                                    <span class="preciounitario">&#36;{{producto.precio}}</span>
+                                    <div class="d-flex align-items-center justify-content-around">
+                                        <div class="d-flex align-items-center justify-content-around gap-2">
+                                            <button class="btn-2 btn-primary px-1" @click="quitar(producto)"
+                                                v-if="producto.__v <=1" type="button" disabled>-</button>
+                                            <button class="btn-2 btn-primary px-1" @click="quitar(producto)" v-else
+                                                type="button">-</button>
+                                            <p class="m-1 preciounitario">{{producto.__v}}</p>
+                                            <button class="btn-2 btn-primary px-1" @click="añadir(producto)"
+                                                type="button" v-if="producto.__v < producto.stock">+</button>
+                                            <button class="btn-2 btn-primary px-1" @click="añadir(producto)"
+                                                type="button" v-else disabled>+</button>
+                                        </div>
+                                        <button class="btn-tooltip btn-borrar" v-on:click="vaciadoDelCarrito(producto)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"
+                                                height="25" width="25">
+                                                <path fill="#494949"
+                                                    d="M8.78842 5.03866C8.86656 4.96052 8.97254 4.91663 9.08305 4.91663H11.4164C11.5269 4.91663 11.6329 4.96052 11.711 5.03866C11.7892 5.11681 11.833 5.22279 11.833 5.33329V5.74939H8.66638V5.33329C8.66638 5.22279 8.71028 5.11681 8.78842 5.03866ZM7.16638 5.74939V5.33329C7.16638 4.82496 7.36832 4.33745 7.72776 3.978C8.08721 3.61856 8.57472 3.41663 9.08305 3.41663H11.4164C11.9247 3.41663 12.4122 3.61856 12.7717 3.978C13.1311 4.33745 13.333 4.82496 13.333 5.33329V5.74939H15.5C15.9142 5.74939 16.25 6.08518 16.25 6.49939C16.25 6.9136 15.9142 7.24939 15.5 7.24939H15.0105L14.2492 14.7095C14.2382 15.2023 14.0377 15.6726 13.6883 16.0219C13.3289 16.3814 12.8414 16.5833 12.333 16.5833H8.16638C7.65805 16.5833 7.17054 16.3814 6.81109 16.0219C6.46176 15.6726 6.2612 15.2023 6.25019 14.7095L5.48896 7.24939H5C4.58579 7.24939 4.25 6.9136 4.25 6.49939C4.25 6.08518 4.58579 5.74939 5 5.74939H6.16667H7.16638ZM7.91638 7.24996H12.583H13.5026L12.7536 14.5905C12.751 14.6158 12.7497 14.6412 12.7497 14.6666C12.7497 14.7771 12.7058 14.8831 12.6277 14.9613C12.5495 15.0394 12.4436 15.0833 12.333 15.0833H8.16638C8.05588 15.0833 7.94989 15.0394 7.87175 14.9613C7.79361 14.8831 7.74972 14.7771 7.74972 14.6666C7.74972 14.6412 7.74842 14.6158 7.74584 14.5905L6.99681 7.24996H7.91638Z"
+                                                    clip-rule="evenodd" fill-rule="evenodd"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="offcanvas-body d-flex justify-content-center align-items-center" v-else>
+                    <div class="d-flex flex-column align-items-center">
+                        <span class="offcanvas-empty">¡El carrito está vacío!</span>
+                        <a href="./juguetes.html" class="offcanvas-empty-link">Realiza tu compra</a>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-around align-items-center">
+                    <p class="precio-total" v-if="productosDelCarrito.length >= 1">
+                        Total: &#36 {{totalFinal()}}
+                    </p>
+                    <button class="realizar-compra" v-on:click="comprarCarrito" v-if="productosDelCarrito.length >= 1">
+                        <span class="text">COMPRAR</span>
+                        <span class="icon">
+                            <svg class="svg-icon" viewBox="0 0 20 20">
+                                <path fill="#fff"
+                                    d="M17.72,5.011H8.026c-0.271,0-0.49,0.219-0.49,0.489c0,0.271,0.219,0.489,0.49,0.489h8.962l-1.979,4.773H6.763L4.935,5.343C4.926,5.316,4.897,5.309,4.884,5.286c-0.011-0.024,0-0.051-0.017-0.074C4.833,5.166,4.025,4.081,2.33,3.908C2.068,3.883,1.822,4.075,1.795,4.344C1.767,4.612,1.962,4.853,2.231,4.88c1.143,0.118,1.703,0.738,1.808,0.866l1.91,5.661c0.066,0.199,0.252,0.333,0.463,0.333h8.924c0.116,0,0.22-0.053,0.308-0.128c0.027-0.023,0.042-0.048,0.063-0.076c0.026-0.034,0.063-0.058,0.08-0.099l2.384-5.75c0.062-0.151,0.046-0.323-0.045-0.458C18.036,5.092,17.883,5.011,17.72,5.011z">
+                                </path>
+                                <path fill="#fff"
+                                    d="M8.251,12.386c-1.023,0-1.856,0.834-1.856,1.856s0.833,1.853,1.856,1.853c1.021,0,1.853-0.83,1.853-1.853S9.273,12.386,8.251,12.386z M8.251,15.116c-0.484,0-0.877-0.393-0.877-0.874c0-0.484,0.394-0.878,0.877-0.878c0.482,0,0.875,0.394,0.875,0.878C9.126,14.724,8.733,15.116,8.251,15.116z">
+                                </path>
+                                <path fill="#fff"
+                                    d="M13.972,12.386c-1.022,0-1.855,0.834-1.855,1.856s0.833,1.853,1.855,1.853s1.854-0.83,1.854-1.853S14.994,12.386,13.972,12.386z M13.972,15.116c-0.484,0-0.878-0.393-0.878-0.874c0-0.484,0.394-0.878,0.878-0.878c0.482,0,0.875,0.394,0.875,0.878C14.847,14.724,14.454,15.116,13.972,15.116z">
+                                </path>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main-contactos">
+            <div class='signup-container'>
+                <div class='left-container'>
+                    <h1>
+                        <i class='fas fa-paw'><img src="assets/paw.svg" alt="paw" id="contact-icon"></i>
+                        FRANCO PETSHOP
+                    </h1>
+                    <div class='puppy' data-aos="fade-up" data-aos-delay="700">
+                        <img
+                            src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-542207-jpeg.png'>
+                    </div>
+                </div>
+                <div class="top-container">
+                    <i class='fas fa-paw'><img src="assets/paw.svg" alt="paw" id="top-contact-icon"></i>
+                    <h1>
+                        FRANCO PETSHOP
+                    </h1>
+                    <div class='puppy'>
+                        <img
+                            src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-542207-jpeg.png'>
+                    </div>
+                </div>
+                <div class='right-container' data-aos="fade-left" data-aos-delay="400" data-aos-duration="1200">
+                    <form @submit.prevent>
+                        <div class="contact-header">
+                            <h1>¿Tenés consultas? ¡Envianos informacion sobre tu mascota!</h1>
+                            <div class='set'>
+                                <div class='pets-name' data-aos="zoom-in" data-aos-delay="500">
+                                    <label for='pets-name'>Nombre</label>
+                                    <input id='pets-name' placeholder="Nombre de mascota" type='text'>
+                                </div>
+                                <div class='pets-name'data-aos="zoom-in" data-aos-delay="600">
+                                    <label for='pets-name'>Tipo</label>
+                                    <input id='pets-name' placeholder="Tipo de mascota" type='text'>
+                                </div>
+                            </div>
+                            <div class='set'>
+                                <div class='pets-breed' data-aos="zoom-in" data-aos-delay="700">
+                                    <label for='pets-breed'>Raza</label>
+                                    <input id='pets-breed' placeholder="Raza de mascota" type='text'>
+                                </div>
+                                <div class='pets-birthday' data-aos="zoom-in" data-aos-delay="800">
+                                    <label for='pets-birthday'>Cumpleaños</label>
+                                    <input id='pets-birthday' placeholder='DD/MM/YYYY' type='text'>
+                                </div>
+                            </div>
+                            <div class='set'>
+                                <div class='pets-gender' data-aos="zoom-in" data-aos-delay="900">
+                                    <label for='pet-gender-female'>Genero</label>
+                                    <div class='radio-container'>
+                                        <input checked='' id='pet-gender-female' name='pet-gender' type='radio'
+                                            value='female'>
+                                        <label for='pet-gender-female'>Hembra</label>
+                                        <input id='pet-gender-male' name='pet-gender' type='radio' value='male'>
+                                        <label for='pet-gender-male'>Macho</label>
+                                    </div>
+                                </div>
+                                <div class='pets-spayed-neutered' data-aos="zoom-in" data-aos-delay="1000">
+                                    <label for='pet-spayed'>¿Está castrado?</label>
+                                    <div class='radio-container'>
+                                        <input checked='' id='pet-spayed' name='spayed-neutered' type='radio'
+                                            value='spayed'>
+                                        <label for='pet-spayed'>Si</label>
+                                        <input id='pet-neutered' name='spayed-neutered' type='radio' value='neutered'>
+                                        <label for='pet-neutered'>No</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='pets-weight' data-aos="zoom-in" data-aos-delay="1100">
+                                <label for='pet-weight-0-25'>Peso</label>
+                                <div class='radio-container'>
+                                    <input checked='' id='pet-weight-0-25' name='pet-weight' type='radio' value='0-25'>
+                                    <label for='pet-weight-0-25'>0-10 kgs</label>
+                                    <input id='pet-weight-25-50' name='pet-weight' type='radio' value='25-50'>
+                                    <label for='pet-weight-25-50'>10-15 kgs</label>
+                                    <input id='pet-weight-50-100' name='pet-weight' type='radio' value='50-100'>
+                                    <label for='pet-weight-50-100'>15-20 kgs</label>
+                                    <input id='pet-weight-100-plus' name='pet-weight' type='radio' value='100+'>
+                                    <label for='pet-weight-100-plus'>20+ kgs</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-footer">
+                            <div class='set'>
+                                <button id='back' type="reset">Limpiar formulario</button>
+                                <button id='next' v-on:click="cartelDeGracias" type="submit">Siguiente</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="list-box">
+                <ul>
+                    <li data-aos="flip-left" data-aos-delay="50" data-aos-duration="1000"><a href="./index.html">Sobre nosotros</a></li>
+                    <li data-aos="flip-left" data-aos-delay="100" data-aos-duration="1000"><a href="#">Contáctenos</a></li>
+                    <li data-aos="flip-left" data-aos-delay="150" data-aos-duration="1000">Políticas de privacidad</li>
+                    <li data-aos="flip-left" data-aos-delay="200" data-aos-duration="1000">Políticas de precio</li>
+                </ul>
+                <ul>
+                    <li data-aos="flip-left" data-aos-delay="250" data-aos-duration="1000">Envío y devoluciones</li>
+                    <li data-aos="flip-left" data-aos-delay="300" data-aos-duration="1000">Preguntas frequentes</li>
+                    <li data-aos="flip-left" data-aos-delay="350" data-aos-duration="1000">Términos y condiciones</li>
+                    <li data-aos="flip-left" data-aos-delay="400" data-aos-duration="1000">Política de devoluciones</li>
+                </ul>
+                <ul>
+                    <li data-aos="flip-left" data-aos-delay="450" data-aos-duration="1000"><img src="assets/facebook.svg" alt="facebook logo"><a href="https://www.facebook.com/people/Franco-Petshop/100080353067385/">Facebook</a></li>
+                    <li data-aos="flip-left" data-aos-delay="500" data-aos-duration="1000"><img src="assets/twitter.svg" alt="twitter logo"><a href="https://twitter.com/FrancoPetshop">Twitter</a></li>
+                    <li data-aos="flip-left" data-aos-delay="550" data-aos-duration="1000"><img src="assets/instagram.svg" alt="instagram logo"><a href="https://www.instagram.com/francopetshop27/">Instagram</a></li>
+                    <li data-aos="flip-left" data-aos-delay="600" data-aos-duration="1000"><img src="assets/youtube.svg" alt="youtube logo"><a href="https://www.youtube.com/channel/UCNbW2MJunOR2CjJCM5iEyzg">Youtube</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-horarios">
+                <a href="#"><img src="assets/logo-white.png" alt="logo" class="footer-logo"></a>
+                <div>
+                    <span class="info-span">Horarios de atención: </span>
+                    <span class="info-span">Lunes a Viernes de 9 a 18</span>
+                    <span class="info-span">Sabados de 9 a 13</span>
+                </div>
+            </div>
+    
+            <iframe data-aos="fade-up"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.6869258109527!2d-58.43257238491949!3d-34.612077380457386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca429815227f%3A0x5d302e497c2cda87!2sR%C3%ADo%20de%20Janeiro%20300%2C%20C1405CCB%20CABA!5e0!3m2!1sen!2sar!4v1649945998538!5m2!1sen!2sar"
+                style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="banner">
+                <span>&#169 Marvel Team | All rights reserved - <i>Flor azul, espinas rojas</i></span>
+            </div>
+        </footer>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
